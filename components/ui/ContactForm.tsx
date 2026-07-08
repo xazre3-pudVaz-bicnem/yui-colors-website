@@ -3,57 +3,42 @@
 import { useState } from "react";
 import { site } from "@/data/site";
 
-type FormStatus = "idle" | "sending" | "done" | "error";
-
 const inputClass =
   "w-full rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/30 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/10";
 
 /**
  * お問い合わせフォーム。
- * 送信先は /api/contact（現在はスタブ）。
- * 実際のメール送信やスプレッドシート連携は app/api/contact/route.ts に追加する。
+ * 送信ボタンでメールアプリが起動し、入力内容が
+ * site.email（some.yui.colors@gmail.com）宛にセットされる。
+ * 将来サーバー送信に切り替える場合は app/api/contact/route.ts を利用する。
  */
 export default function ContactForm() {
-  const [status, setStatus] = useState<FormStatus>("idle");
+  const [opened, setOpened] = useState(false);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("sending");
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") ?? "");
+    const phone = String(data.get("phone") ?? "");
+    const email = String(data.get("email") ?? "");
+    const message = String(data.get("message") ?? "");
 
-    const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const subject = `【染 YUI COLORS】お問い合わせ（${name}様）`;
+    const body = [
+      `お名前: ${name}`,
+      `電話番号: ${phone}`,
+      email ? `メールアドレス: ${email}` : null,
+      "",
+      "お問い合わせ内容:",
+      message,
+    ]
+      .filter((line) => line !== null)
+      .join("\n");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("送信に失敗しました");
-      form.reset();
-      setStatus("done");
-    } catch {
-      setStatus("error");
-    }
-  }
-
-  if (status === "done") {
-    return (
-      <div className="rounded-3xl bg-mist p-10 text-center">
-        <p className="font-serif text-lg tracking-wide text-ink">
-          お問い合わせを受け付けました
-        </p>
-        <p className="mt-4 text-sm leading-loose text-ink/70">
-          内容を確認のうえ、折り返しご連絡いたします。
-          <br />
-          お急ぎの場合は、お電話（
-          <a href={site.telHref} className="text-primary">
-            {site.tel}
-          </a>
-          ）にてお問い合わせください。
-        </p>
-      </div>
-    );
+    window.location.href = `${site.emailHref}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    setOpened(true);
   }
 
   return (
@@ -115,25 +100,28 @@ export default function ContactForm() {
           name="message"
           required
           rows={6}
-          placeholder="ご希望の日時・人数・気になることなど、お気軽にお書きください。"
+          placeholder="ご希望のコース・日時・人数・気になることなど、お気軽にお書きください。"
           className={inputClass}
         />
       </div>
 
-      {status === "error" && (
-        <p className="text-sm text-red-600">
-          送信できませんでした。お手数ですが、お電話（{site.tel}
-          ）にてお問い合わせください。
-        </p>
-      )}
-
       <button
         type="submit"
-        disabled={status === "sending"}
-        className="w-full rounded-full bg-primary px-8 py-4 text-sm tracking-wider text-white transition-colors hover:bg-deep disabled:opacity-60"
+        className="w-full rounded-full bg-primary px-8 py-4 text-sm tracking-wider text-white transition-colors hover:bg-deep"
       >
-        {status === "sending" ? "送信しています" : "この内容で送信する"}
+        メールで送信する
       </button>
+
+      <p className="text-center text-xs leading-relaxed text-ink/50">
+        送信ボタンを押すと、お使いのメールアプリが起動し、
+        入力内容が宛先（{site.email}）にセットされます。
+        {opened && (
+          <span className="mt-2 block text-primary">
+            メールアプリが開かない場合は、お手数ですが {site.email}{" "}
+            まで直接ご連絡ください。
+          </span>
+        )}
+      </p>
     </form>
   );
 }

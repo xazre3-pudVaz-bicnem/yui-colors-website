@@ -16,6 +16,9 @@ export const site = {
   tel: "080-5029-8467",
   telHref: "tel:080-5029-8467",
 
+  email: "some.yui.colors@gmail.com",
+  emailHref: "mailto:some.yui.colors@gmail.com",
+
   address: {
     postal: "520-0232",
     pref: "滋賀県",
@@ -24,9 +27,9 @@ export const site = {
     full: "〒520-0232 滋賀県大津市真野6-29-6",
   },
 
-  // 営業情報（未確認の項目は断定しない）
-  hours: "確認中（お電話にてお問い合わせください）",
-  closed: "確認中（お電話にてお問い合わせください）",
+  // 営業情報（Googleビジネスプロフィール掲載情報より）
+  hours: "9:00〜17:00",
+  closed: "火曜日・木曜日",
   parking: "確認中（お車でお越しの際は事前にご確認ください）",
 
   instagram: {

@@ -73,6 +73,17 @@ export default function AccessPage() {
                   </dd>
                 </div>
                 <div className="flex gap-6 border-b border-ink/5 pb-5">
+                  <dt className="w-24 shrink-0 text-ink/50">メール</dt>
+                  <dd>
+                    <a
+                      href={site.emailHref}
+                      className="text-primary underline-offset-4 hover:underline"
+                    >
+                      {site.email}
+                    </a>
+                  </dd>
+                </div>
+                <div className="flex gap-6 border-b border-ink/5 pb-5">
                   <dt className="w-24 shrink-0 text-ink/50">営業時間</dt>
                   <dd className="text-ink/80">{site.hours}</dd>
                 </div>

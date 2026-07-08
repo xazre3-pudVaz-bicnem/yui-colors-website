@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 
 /**
- * お問い合わせフォームの送信先（スタブ）。
+ * お問い合わせフォームの送信先（スタブ・現在は未使用）。
+ * 現在のフォームは mailto: で some.yui.colors@gmail.com 宛に送信する方式。
  *
- * TODO: 本番運用時にメール送信やスプレッドシート連携を追加する。
+ * TODO: サーバー側送信に切り替える場合はここに実装する。
  * 例：
- *   - Resend / SendGrid でのメール送信
+ *   - Resend / SendGrid で some.yui.colors@gmail.com へメール送信
  *   - Google Forms / スプレッドシートへの転記
  *   - LINE通知
  * バリデーション済みの `payload` をそのまま渡せる構造にしてある。

@@ -36,6 +36,15 @@ export default function Footer() {
                   {site.tel}
                 </a>
               </p>
+              <p>
+                メール：
+                <a
+                  href={site.emailHref}
+                  className="text-primary underline-offset-4 hover:underline"
+                >
+                  {site.email}
+                </a>
+              </p>
               <p>営業時間：{site.hours}</p>
               <p>定休日：{site.closed}</p>
             </div>

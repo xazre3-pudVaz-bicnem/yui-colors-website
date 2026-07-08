@@ -47,6 +47,18 @@ export default function ContactPage() {
                 <br className="md:hidden" />
                 体験中などで出られない場合は、折り返しご連絡いたします。
               </p>
+              <p className="mt-3 text-sm text-ink/70">
+                営業時間：{site.hours}（定休日：{site.closed}）
+              </p>
+              <p className="mt-1 text-sm text-ink/70">
+                メール：
+                <a
+                  href={site.emailHref}
+                  className="text-primary underline-offset-4 hover:underline"
+                >
+                  {site.email}
+                </a>
+              </p>
               <div className="mt-6 flex justify-center">
                 <CtaButton href={site.telHref} variant="primary">
                   電話で問い合わせる

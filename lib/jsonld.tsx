@@ -20,6 +20,7 @@ export function localBusinessJsonLd() {
     description: site.description,
     url: site.url,
     telephone: site.tel,
+    email: site.email,
     address: {
       "@type": "PostalAddress",
       postalCode: site.address.postal,
@@ -28,6 +29,14 @@ export function localBusinessJsonLd() {
       streetAddress: site.address.town,
       addressCountry: "JP",
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Wednesday", "Friday", "Saturday", "Sunday"],
+        opens: "09:00",
+        closes: "17:00",
+      },
+    ],
     areaServed: ["大津市", "滋賀県", "琵琶湖周辺"],
     sameAs: [site.instagram.url],
   };
