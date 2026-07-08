@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SmartImage from "@/components/ui/SmartImage";
 import Reveal from "@/components/ui/Reveal";
 import ContactCta from "@/components/sections/ContactCta";
 import { JsonLd, articleJsonLd } from "@/lib/jsonld";
 import { createMetadata } from "@/lib/meta";
-import { blogPosts, getPostBySlug, sortedPosts, formatDate } from "@/data/blog";
+import { getAllPosts, getPostBySlug, formatDate } from "@/lib/blog";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -30,12 +32,72 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+type MdProps<T extends keyof React.JSX.IntrinsicElements> =
+  React.ComponentProps<T> & { node?: unknown };
+
+/** react-markdownが渡す内部プロパティ`node`をDOMに出力しないよう取り除く */
+function stripNode<T extends { node?: unknown }>(props: T): Omit<T, "node"> {
+  const rest = { ...props };
+  delete rest.node;
+  return rest;
+}
+
+const markdownComponents = {
+  h2: (props: MdProps<"h2">) => (
+    <h2
+      className="mt-12 font-serif text-xl leading-relaxed tracking-wide text-ink md:text-2xl"
+      {...stripNode(props)}
+    />
+  ),
+  h3: (props: MdProps<"h3">) => (
+    <h3
+      className="mt-8 font-serif text-lg leading-relaxed tracking-wide text-ink"
+      {...stripNode(props)}
+    />
+  ),
+  p: (props: MdProps<"p">) => (
+    <p
+      className="mt-5 text-sm leading-loose text-ink/75 md:text-base"
+      {...stripNode(props)}
+    />
+  ),
+  a: (props: MdProps<"a">) => (
+    <a
+      className="text-primary underline underline-offset-4 hover:text-deep"
+      {...stripNode(props)}
+    />
+  ),
+  ul: (props: MdProps<"ul">) => (
+    <ul
+      className="mt-5 list-disc space-y-2 pl-5 text-sm leading-loose text-ink/75 md:text-base"
+      {...stripNode(props)}
+    />
+  ),
+  ol: (props: MdProps<"ol">) => (
+    <ol
+      className="mt-5 list-decimal space-y-2 pl-5 text-sm leading-loose text-ink/75 md:text-base"
+      {...stripNode(props)}
+    />
+  ),
+  strong: (props: MdProps<"strong">) => (
+    <strong className="font-semibold text-ink" {...stripNode(props)} />
+  ),
+  blockquote: (props: MdProps<"blockquote">) => (
+    <blockquote
+      className="mt-5 border-l-2 border-aisora pl-5 text-sm leading-loose text-ink/60"
+      {...stripNode(props)}
+    />
+  ),
+};
+
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = sortedPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const related = getAllPosts()
+    .filter((p) => p.slug !== post.slug)
+    .slice(0, 3);
 
   return (
     <>
@@ -73,30 +135,48 @@ export default async function BlogPostPage({ params }: Props) {
               sizes="(min-width: 768px) 45rem, 90vw"
             />
           </Reveal>
-          <Reveal>
-            <p className="mt-10 border-l-2 border-aisora pl-6 text-sm leading-loose text-ink/75 md:text-base">
-              {post.lead}
-            </p>
-          </Reveal>
-          {post.sections.map((section) => (
-            <Reveal key={section.heading}>
-              <section className="mt-12">
-                <h2 className="font-serif text-xl leading-relaxed tracking-wide text-ink md:text-2xl">
-                  {section.heading}
-                </h2>
-                <div className="mt-5 space-y-5">
-                  {section.paragraphs.map((paragraph) => (
-                    <p
-                      key={paragraph.slice(0, 24)}
-                      className="text-sm leading-loose text-ink/75 md:text-base"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </section>
+
+          {post.source === "markdown" && post.markdown ? (
+            <Reveal>
+              <div className="mt-6">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={markdownComponents}
+                >
+                  {post.markdown}
+                </ReactMarkdown>
+              </div>
             </Reveal>
-          ))}
+          ) : (
+            <>
+              {post.lead && (
+                <Reveal>
+                  <p className="mt-10 border-l-2 border-aisora pl-6 text-sm leading-loose text-ink/75 md:text-base">
+                    {post.lead}
+                  </p>
+                </Reveal>
+              )}
+              {post.sections?.map((section) => (
+                <Reveal key={section.heading}>
+                  <section className="mt-12">
+                    <h2 className="font-serif text-xl leading-relaxed tracking-wide text-ink md:text-2xl">
+                      {section.heading}
+                    </h2>
+                    <div className="mt-5 space-y-5">
+                      {section.paragraphs.map((paragraph) => (
+                        <p
+                          key={paragraph.slice(0, 24)}
+                          className="text-sm leading-loose text-ink/75 md:text-base"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </section>
+                </Reveal>
+              ))}
+            </>
+          )}
 
           <Reveal>
             <div className="mt-16 rounded-3xl bg-mist p-8 md:p-10">

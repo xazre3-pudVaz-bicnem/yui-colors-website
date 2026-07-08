@@ -39,6 +39,20 @@ npm run lint   # ESLint
 写真がない間は自動的にプレースホルダーが表示されます。
 詳細は [public/images/README.md](public/images/README.md) を参照してください。
 
+## ブログの自動投稿（Claude API + GitHub Actions）
+
+毎日11:00（JST）に、Claude APIがブログ記事を1本自動生成して `content/blog/` にコミットします。
+Vercel連携により、pushされると自動でサイトに公開されます。
+
+- ワークフロー: `.github/workflows/daily-blog.yml`（手動実行も可能: Actions → Daily blog post → Run workflow）
+- 生成スクリプト: `scripts/generate-daily-post.ts`（ローカル実行: `npm run generate:post`）
+- 記事の置き場所: `content/blog/*.md`（frontmatter付きMarkdown。手書き記事の追加もこの形式でOK）
+- 記事の読み込み: `lib/blog.ts` が `content/blog/` と `data/blog.ts`（初期8記事）を統合して一覧・詳細・カテゴリ・sitemapへ供給
+- カテゴリページ: `/blog/category/{kanko|oyako|date|hajimete|tanoshimikata}`
+- 使用モデル: 既定は `claude-haiku-4-5-20251001`。リポジトリ変数 `ANTHROPIC_MODEL` で上書き可能
+- 必要なGitHub Secret: `ANTHROPIC_API_KEY`（Settings → Secrets and variables → Actions で設定）
+- 品質ガード: 禁止表現（にじむ・ハンカチ・誇大表現）や文字数・見出し構成をスクリプト側で検証し、不合格なら最大3回再生成
+
 ## 運用メモ
 
 - 本番ドメイン：https://someyuicolors.com（`data/site.ts` の `url`）

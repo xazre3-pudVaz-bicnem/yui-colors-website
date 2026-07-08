@@ -1,0 +1,48 @@
+name: Daily blog post
+
+on:
+  schedule:
+    # 毎日 11:00 JST（= 02:00 UTC）
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate daily post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # リポジトリ変数 ANTHROPIC_MODEL を設定するとモデルを上書きできる
+          # （未設定時は claude-haiku-4-5-20251001）
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+        run: npx tsx scripts/generate-daily-post.ts
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/blog
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            FILE=$(git diff --cached --name-only)
+            git commit -m "Add daily blog post" -m "$FILE"
+            git push
+            echo "Pushed: $FILE"
+          fi
