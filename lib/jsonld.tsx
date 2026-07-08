@@ -49,7 +49,7 @@ export function touristAttractionJsonLd() {
     "@id": `${site.url}/#touristattraction`,
     name: site.name,
     description:
-      "滋賀県大津市真野にある染め体験教室。琵琶湖観光とあわせて楽しめる染色体験・ワークショップを開催しています。",
+      "滋賀県大津市真野にある染め工房。琵琶湖観光とあわせて楽しめる染色体験・ワークショップを開催しています。",
     url: site.url,
     telephone: site.tel,
     address: {

@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="water-drift absolute inset-0">
         <SmartImage
           src="/images/hero.jpg"
-          alt="青空の下に広がる琵琶湖と大津の湖岸の風景"
+          alt="青空のもと琵琶湖にかかる琵琶湖大橋"
           className="h-full w-full"
           sizes="100vw"
           priority
@@ -34,7 +34,7 @@ export default function Hero() {
             <br className="hidden md:block" />
             旅の思い出に、親子の時間に、ふたりのデートに。
             <br className="hidden md:block" />
-            自分だけの色を残す体験教室です。
+            自分だけの色を残す小さな工房です。
           </p>
         </Reveal>
       </div>

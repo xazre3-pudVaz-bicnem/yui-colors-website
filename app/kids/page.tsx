@@ -14,7 +14,7 @@ import { faqItems } from "@/data/faq";
 export const metadata: Metadata = createMetadata({
   title: "親子・お子さまと｜大津市で子供と楽しむ染め体験",
   description:
-    "大津市で子供と一緒に楽しめる体験をお探しの方へ。染 YUI COLORSの染め体験は、親子で参加できる屋内の体験教室です。色を選び、布を染める時間が、親子の思い出になります。",
+    "大津市で子供と一緒に楽しめる体験をお探しの方へ。染 YUI COLORSの染め体験は、親子で参加できる屋内の染め体験です。色を選び、布を染める時間が、親子の思い出になります。",
   path: "/kids",
   keywords: [
     "大津市 子供 体験",
@@ -35,7 +35,7 @@ const kidsPoints = [
   {
     title: "正解のないものづくり",
     description:
-      "染めもののにじみやむらは、失敗ではなく味わいです。上手にできたかどうかを気にせず、その子だけの一枚を仕上げられます。ものづくりが苦手なお子さまにも安心です。",
+      "染めもののむらや偶然できる模様は、失敗ではなく味わいです。上手にできたかどうかを気にせず、その子だけの一枚を仕上げられます。ものづくりが苦手なお子さまにも安心です。",
   },
   {
     title: "親子で並んで、手を動かす",
@@ -56,7 +56,7 @@ export default function KidsPage() {
       <PageHero
         eyebrow="With Kids"
         title="親子・お子さまと"
-        lead="小さな手で色を選び、布を染める。大津市・真野の染め体験は、5・6歳のお子さまから親子で一緒に楽しめる屋内の体験教室です。染めた作品は当日持ち帰れるので、家に帰ったあとも思い出が続きます。"
+        lead="小さな手で色を選び、布を染める。大津市・真野の染め体験は、5・6歳のお子さまから親子で一緒に楽しめる屋内の染め工房です。染めた作品は当日持ち帰れるので、家に帰ったあとも思い出が続きます。"
       />
       <Breadcrumbs
         items={[
@@ -70,7 +70,7 @@ export default function KidsPage() {
           <Reveal>
             <SmartImage
               src="/images/kids.jpg"
-              alt="桜の模様を絞り染めした、色とりどりの巾着袋"
+              alt="丸い模様を絞り染めした、からし色の小さなトートバッグ"
               className="aspect-[16/9] rounded-3xl md:aspect-[21/9]"
               sizes="(min-width: 768px) 90vw, 100vw"
             />

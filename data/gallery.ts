@@ -41,4 +41,8 @@ export const galleryImages: GalleryImage[] = [
     src: "/images/gallery-08.jpg",
     alt: "エプロン姿で絞りの糸をほどく仕上げの作業",
   },
+  {
+    src: "/images/gallery-09.jpg",
+    alt: "魚の模様を絞り染めした、水色の巾着袋",
+  },
 ];

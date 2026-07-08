@@ -8,7 +8,7 @@ export const site = {
   nameReading: "ソメ ユイ カラーズ",
   tagline: "湖のそばで、色を結ぶ。",
   description:
-    "滋賀県大津市真野の染め体験教室「染 YUI COLORS」。琵琶湖観光の立ち寄りに、親子の時間に、ふたりのデートに。自分だけの色を残す染色体験をお楽しみいただけます。",
+    "滋賀県大津市真野の染め工房「染 YUI COLORS」。琵琶湖観光の立ち寄りに、親子の時間に、ふたりのデートに。自分だけの色を残す染色体験をお楽しみいただけます。",
 
   // TODO: 本番ドメイン取得後に変更してください（canonical / OGP / sitemap に使用）
   url: "https://yui-colors.example.com",
@@ -27,10 +27,11 @@ export const site = {
     full: "〒520-0232 滋賀県大津市真野6-29-6",
   },
 
-  // 営業情報（Googleビジネスプロフィール掲載情報より）
+  // 営業情報（Googleビジネスプロフィール・店舗提供情報より）
   hours: "9:00〜17:00",
   closed: "火曜日・木曜日",
-  parking: "確認中（お車でお越しの際は事前にご確認ください）",
+  station: "JR湖西線「小野駅」より徒歩5分",
+  parking: "あり（お車の台数が多くなる場合は、事前にご連絡ください）",
 
   instagram: {
     url: "https://www.instagram.com/yuicolors2026/",
@@ -69,7 +70,7 @@ export const fullNav: NavItem[] = [
   { label: "ホーム", href: "/" },
   { label: "体験内容", href: "/experience" },
   { label: "親子・お子さまと", href: "/kids" },
-  { label: "デート・おふたりで", href: "/date" },
+  { label: "デート・女子旅で", href: "/date" },
   { label: "大津市観光と一緒に", href: "/otsu-tourism" },
   { label: "初めての方へ", href: "/beginner" },
   { label: "アクセス", href: "/access" },

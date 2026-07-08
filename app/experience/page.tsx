@@ -56,12 +56,27 @@ export default function ExperiencePage() {
                     index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
                   }`}
                 >
-                  <SmartImage
-                    src={exp.image}
-                    alt={exp.imageAlt}
-                    className="aspect-[4/3] rounded-3xl"
-                    sizes="(min-width: 768px) 45vw, 90vw"
-                  />
+                  <div>
+                    <SmartImage
+                      src={exp.image}
+                      alt={exp.imageAlt}
+                      className="aspect-[4/3] rounded-3xl"
+                      sizes="(min-width: 768px) 45vw, 90vw"
+                    />
+                    {exp.subImage && exp.subImageAlt && (
+                      <div className="mt-4 flex items-center gap-4">
+                        <SmartImage
+                          src={exp.subImage}
+                          alt={exp.subImageAlt}
+                          className="aspect-square w-24 shrink-0 rounded-2xl md:w-28"
+                          sizes="7rem"
+                        />
+                        <p className="text-xs leading-relaxed text-ink/50">
+                          {exp.subImageAlt}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                   <div>
                     <p className="text-xs uppercase tracking-[0.35em] text-primary/60">
                       Course {exp.course}

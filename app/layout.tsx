@@ -22,7 +22,7 @@ const mincho = Shippori_Mincho({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `大津市・琵琶湖のほとりの染め体験教室｜${site.name}`,
+    default: `大津市・琵琶湖のほとりの染め体験工房｜${site.name}`,
     template: `%s｜${site.name}`,
   },
   description: site.description,

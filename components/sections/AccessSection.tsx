@@ -11,7 +11,7 @@ export default function AccessSection() {
           <SectionHeading
             eyebrow="Access"
             title="アクセス"
-            lead="琵琶湖の西側、大津市真野エリア。堅田・雄琴方面の観光と組み合わせて立ち寄りやすい場所です。"
+            lead="琵琶湖大橋にほど近い、大津市真野エリア。JR湖西線「小野駅」から徒歩5分、駐車場もございます。"
           />
         </Reveal>
         <div className="grid gap-10 md:grid-cols-2 md:gap-14">
@@ -20,6 +20,10 @@ export default function AccessSection() {
               <div className="flex gap-6 border-b border-ink/5 pb-5">
                 <dt className="w-24 shrink-0 text-ink/50">所在地</dt>
                 <dd className="text-ink/80">{site.address.full}</dd>
+              </div>
+              <div className="flex gap-6 border-b border-ink/5 pb-5">
+                <dt className="w-24 shrink-0 text-ink/50">最寄駅</dt>
+                <dd className="text-ink/80">{site.station}</dd>
               </div>
               <div className="flex gap-6 border-b border-ink/5 pb-5">
                 <dt className="w-24 shrink-0 text-ink/50">電話番号</dt>

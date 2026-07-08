@@ -105,7 +105,7 @@ export default async function BlogPostPage({ params }: Props) {
               </p>
               <p className="mt-3 text-sm leading-loose text-ink/70">
                 染 YUI
-                COLORSは、琵琶湖のほとりで楽しむ染め体験教室です。観光の立ち寄りに、親子の時間に、ふたりのデートに。まずは体験内容をご覧ください。
+                COLORSは、琵琶湖のほとりで楽しむ染め工房です。観光の立ち寄りに、親子の時間に、ふたりのデートに。まずは体験内容をご覧ください。
               </p>
               <div className="mt-5 flex flex-wrap gap-x-8 gap-y-2 text-sm">
                 <Link

@@ -14,7 +14,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = createMetadata({
   title: "アクセス｜大津市真野・琵琶湖周辺からの行き方",
   description:
-    "染 YUI COLORSへのアクセスのご案内。所在地は滋賀県大津市真野6-29-6。琵琶湖周辺観光や堅田・雄琴方面からの立ち寄りにも便利な、湖西エリアの染め体験教室です。",
+    "染 YUI COLORSへのアクセスのご案内。所在地は滋賀県大津市真野6-29-6。琵琶湖周辺観光や堅田・雄琴方面からの立ち寄りにも便利な、湖西エリアの染め工房です。",
   path: "/access",
   keywords: [
     "染 YUI COLORS アクセス",
@@ -31,7 +31,7 @@ export default function AccessPage() {
       <PageHero
         eyebrow="Access"
         title="アクセス"
-        lead="工房は、琵琶湖の西側に広がる大津市真野エリアにあります。堅田・雄琴方面の観光や、湖西の旅の途中に立ち寄りやすい場所です。"
+        lead="工房は、琵琶湖大橋にほど近い大津市真野エリアにあります。JR湖西線「小野駅」から徒歩5分、駐車場もございます。湖西の旅の途中に、気軽にお立ち寄りください。"
       />
       <Breadcrumbs
         items={[
@@ -57,6 +57,10 @@ export default function AccessPage() {
                 <div className="flex gap-6 border-b border-ink/5 pb-5">
                   <dt className="w-24 shrink-0 text-ink/50">所在地</dt>
                   <dd className="text-ink/80">{site.address.full}</dd>
+                </div>
+                <div className="flex gap-6 border-b border-ink/5 pb-5">
+                  <dt className="w-24 shrink-0 text-ink/50">最寄駅</dt>
+                  <dd className="text-ink/80">{site.station}</dd>
                 </div>
                 <div className="flex gap-6 border-b border-ink/5 pb-5">
                   <dt className="w-24 shrink-0 text-ink/50">電話番号</dt>
@@ -133,19 +137,19 @@ export default function AccessPage() {
           <div className="grid gap-6 md:grid-cols-3">
             {[
               {
-                title: "堅田方面から",
+                title: "堅田・雄琴方面から車で約10分",
                 description:
-                  "浮御堂をはじめ、湖畔の景色が楽しめる堅田エリアからほど近い立地です。湖岸の散策とあわせた立ち寄りに向いています。",
+                  "浮御堂のある堅田も、雄琴温泉も、どちらも車で10分ほどの同じエリアです。湖畔の散策や温泉の前後に、無理なく立ち寄れます。",
               },
               {
-                title: "雄琴方面から",
+                title: "高島方面との行き来に",
                 description:
-                  "雄琴温泉に宿泊される方の、チェックイン前後の時間の過ごし方としてもご利用いただけます。",
+                  "真野は、メタセコイア並木や白鬚神社で知られる高島市と、京都・大阪方面のちょうどあいだにあります。湖西をたどる旅の途中の立ち寄りに便利です。",
               },
               {
-                title: "お車・公共交通で",
+                title: "琵琶湖大橋を渡って",
                 description:
-                  "具体的な経路や所要時間は、出発地に合わせてご案内できます。ご来店前にお電話でお気軽にご確認ください。",
+                  "対岸の守山市（琵琶湖マリオットホテル・ヤンマーサンセットマリーナ周辺）からは、琵琶湖大橋を渡って車で15分以内。メロディーロードとして知られる橋からの湖の眺めも、道中の楽しみです。",
               },
             ].map((item, index) => (
               <Reveal key={item.title} delay={index * 90}>

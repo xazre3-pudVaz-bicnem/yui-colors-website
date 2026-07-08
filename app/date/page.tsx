@@ -9,15 +9,16 @@ import ContactCta from "@/components/sections/ContactCta";
 import { createMetadata } from "@/lib/meta";
 
 export const metadata: Metadata = createMetadata({
-  title: "デート・おふたりで｜大津市の落ち着いた体験デート",
+  title: "デート・女子旅｜大津市の落ち着いた体験デート・女子旅スポット",
   description:
-    "大津市でデートにぴったりの体験をお探しのおふたりへ。染 YUI COLORSの染め体験は、静かな工房でふたりの色を残す、落ち着いた大人のデートです。雨の日デートにも。",
+    "大津市でデートや女子旅にぴったりの体験を探している方へ。染 YUI COLORSの染め体験は、静かな工房でそれぞれの色を残す落ち着いた時間。3・4人で一緒に参加でき、雨の日にも。",
   path: "/date",
   keywords: [
     "大津市 デート 体験",
     "カップル 大津市 体験",
+    "大津 女子旅 体験",
+    "滋賀 女子旅",
     "大津市 デート 雨の日",
-    "滋賀 デート 体験",
   ],
 });
 
@@ -25,7 +26,7 @@ const datePoints = [
   {
     title: "会話が自然と生まれる",
     description:
-      "色の選び方、仕上がりの予想、染料がにじんでいく様子。手を動かすデートには話題が尽きません。沈黙が気にならない心地よさは、体験デートならではです。",
+      "色の選び方、仕上がりの予想、染料が染み込んでいく様子。手を動かすデートには話題が尽きません。沈黙が気にならない心地よさは、体験デートならではです。",
   },
   {
     title: "ふたりの色が、形に残る",
@@ -69,14 +70,14 @@ export default function DatePage() {
   return (
     <>
       <PageHero
-        eyebrow="For Couples"
-        title="デート・おふたりで"
-        lead="静かな工房で、ふたりでひとつずつ色を選ぶ。染 YUI COLORSの染め体験は、大津市で過ごす落ち着いたデートの選択肢です。ふたりで残す体験が、何年たっても色あせない思い出になります。"
+        eyebrow="Couples & Friends"
+        title="デート・女子旅で"
+        lead="静かな工房で、それぞれの色を選ぶ。染 YUI COLORSの染め体験は、大津市で過ごす落ち着いたデートにも、気の合う仲間との女子旅にも合う時間です。一緒に残した色が、何年たっても色あせない思い出になります。"
       />
       <Breadcrumbs
         items={[
           { name: "ホーム", href: "/" },
-          { name: "デート・おふたりで", href: "/date" },
+          { name: "デート・女子旅で", href: "/date" },
         ]}
       />
 
@@ -117,6 +118,49 @@ export default function DatePage() {
 
       <WaveDivider fill="#eaf5fb" />
       <section className="lake-gradient py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-5">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Girls' Trip"
+              title="女子旅にも、選ばれています"
+              lead="染め体験は1枠5名まで。3・4人のグループでも、同じ時間に一緒にご参加いただけます。"
+            />
+          </Reveal>
+          <div className="space-y-6">
+            {[
+              {
+                title: "並べて撮りたくなる、色違いの作品",
+                description:
+                  "同じメニューでも、選ぶ色で仕上がりはそれぞれ。染め上げた作品を並べて写真に残す時間まで含めて、女子旅の思い出になります。",
+              },
+              {
+                title: "ストール染めや傘巻き絞りが人気",
+                description:
+                  "身につけられるストール染めコースや、京都の伝統技法にふれる傘巻き絞りコースは、じっくり楽しみたい女子旅にぴったりです。",
+              },
+              {
+                title: "琵琶湖観光と組み合わせて",
+                description:
+                  "工房は琵琶湖大橋のほど近く。湖のほとりのカフェや温泉と組み合わせれば、ゆったりとした大津の女子旅プランが完成します。",
+              },
+            ].map((item, index) => (
+              <Reveal key={item.title} delay={index * 90}>
+                <div className="rounded-3xl bg-white p-8">
+                  <h3 className="font-serif text-lg tracking-wide text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-loose text-ink/70">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <WaveDivider fill="#ffffff" />
+      <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-5">
           <Reveal>
             <SectionHeading
@@ -128,7 +172,7 @@ export default function DatePage() {
           <div className="space-y-6">
             {datePlan.map((item, index) => (
               <Reveal key={item.title} delay={index * 90}>
-                <div className="flex gap-6 rounded-3xl bg-white p-7 md:gap-10 md:p-9">
+                <div className="flex gap-6 rounded-3xl border border-ink/5 bg-snow p-7 md:gap-10 md:p-9">
                   <p className="w-12 shrink-0 pt-1 font-serif text-sm tracking-widest text-primary md:w-16">
                     {item.time}
                   </p>
@@ -148,8 +192,8 @@ export default function DatePage() {
       </section>
 
       <ContactCta
-        title="おふたりのご予約、お待ちしています"
-        lead="記念日のご利用や、旅程に合わせたご参加のご相談も承ります。お電話でお気軽にどうぞ。"
+        title="おふたりでも、仲間とでも"
+        lead="記念日のご利用や、女子旅グループでのご参加のご相談も承ります。お電話でお気軽にどうぞ。"
       />
     </>
   );

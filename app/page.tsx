@@ -15,9 +15,9 @@ import { createMetadata } from "@/lib/meta";
 import { topFaqItems } from "@/data/faq";
 
 export const metadata: Metadata = createMetadata({
-  title: "大津市・琵琶湖のほとりの染め体験教室",
+  title: "大津市・琵琶湖のほとりの染め体験工房",
   description:
-    "大津市真野の染め体験教室「染 YUI COLORS」。琵琶湖観光の立ち寄りに、親子の体験に、デートに。滋賀で染色体験を楽しむなら、湖のそばで色を結ぶ時間をどうぞ。",
+    "大津市真野の染め工房「染 YUI COLORS」。琵琶湖観光の立ち寄りに、親子の体験に、デートに。滋賀で染色体験を楽しむなら、湖のそばで色を結ぶ時間をどうぞ。",
   path: "/",
   keywords: [
     "大津市 体験",
