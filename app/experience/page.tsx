@@ -8,19 +8,23 @@ import WaveDivider from "@/components/ui/WaveDivider";
 import Flow from "@/components/sections/Flow";
 import ContactCta from "@/components/sections/ContactCta";
 import { createMetadata } from "@/lib/meta";
-import { experiences, experienceNote } from "@/data/experiences";
+import {
+  experiences,
+  bengaraIntro,
+  experienceNote,
+} from "@/data/experiences";
 
 export const metadata: Metadata = createMetadata({
-  title: "体験内容｜大津市で楽しむ染め体験・ワークショップ",
+  title: "体験内容｜べんがら染め体験3コース（1,500円〜）",
   description:
-    "染 YUI COLORSの体験内容のご案内。ハンカチやトートバッグなど、大津市・琵琶湖のほとりで楽しむ染色体験のメニューと流れをご紹介します。雨の日も屋内でゆっくり楽しめます。",
+    "染 YUI COLORSのべんがら染め体験は3コース。簡単絞り染め（1,500円・5歳〜）、ストール染め、京都の伝統技法に挑戦する傘巻き絞り。作品は当日お持ち帰りいただけます。",
   path: "/experience",
   keywords: [
     "大津市 染め体験",
+    "べんがら染め 体験",
     "大津市 体験教室",
     "滋賀 染色体験",
     "大津市 ワークショップ",
-    "大津市 雨の日 体験",
   ],
 });
 
@@ -29,8 +33,8 @@ export default function ExperiencePage() {
     <>
       <PageHero
         eyebrow="Experience"
-        title="体験内容"
-        lead="白い布に、自分で選んだ色を重ねていく。染 YUI COLORSの染め体験は、初めての方でもひとつずつ丁寧にご案内する、大津市・真野の小さなワークショップです。"
+        title="べんがら染め体験 3コース"
+        lead={bengaraIntro}
       />
       <Breadcrumbs
         items={[
@@ -40,51 +44,79 @@ export default function ExperiencePage() {
       />
 
       <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-6xl space-y-16 px-5 md:space-y-24">
+        <div className="mx-auto max-w-6xl space-y-20 px-5 md:space-y-28">
           {experiences.map((exp, index) => (
             <Reveal key={exp.slug}>
-              <article
-                className={`grid items-center gap-10 md:grid-cols-2 md:gap-14 ${
-                  index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
-                }`}
-              >
-                <SmartImage
-                  src={exp.image}
-                  alt={exp.imageAlt}
-                  className="aspect-[4/3] rounded-3xl"
-                  sizes="(min-width: 768px) 45vw, 90vw"
-                />
-                <div>
-                  <h2 className="font-serif text-xl leading-relaxed tracking-wide text-ink md:text-3xl">
-                    {exp.title}
-                  </h2>
-                  <p className="mt-5 text-sm leading-loose text-ink/75 md:text-base">
-                    {exp.description}
-                  </p>
-                  <ul className="mt-6 space-y-2">
-                    {exp.points.map((point) => (
+              <article>
+                <div
+                  className={`grid items-center gap-10 md:grid-cols-2 md:gap-14 ${
+                    index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+                  }`}
+                >
+                  <SmartImage
+                    src={exp.image}
+                    alt={exp.imageAlt}
+                    className="aspect-[4/3] rounded-3xl"
+                    sizes="(min-width: 768px) 45vw, 90vw"
+                  />
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.35em] text-primary/60">
+                      Course {exp.course}
+                    </p>
+                    <h2 className="mt-2 font-serif text-xl leading-relaxed tracking-wide text-ink md:text-3xl">
+                      {exp.title}
+                    </h2>
+                    <p className="mt-5 text-sm leading-loose text-ink/75 md:text-base">
+                      {exp.description}
+                    </p>
+                    <ul className="mt-6 space-y-2">
+                      {exp.points.map((point) => (
+                        <li
+                          key={point}
+                          className="flex items-baseline gap-3 text-sm text-ink/70"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="h-1.5 w-1.5 shrink-0 translate-y-[-2px] rounded-full bg-primary/50"
+                          />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                    <dl className="mt-7 space-y-2 rounded-2xl bg-snow p-6 text-sm">
+                      <div className="flex gap-5">
+                        <dt className="w-20 shrink-0 text-ink/50">対象</dt>
+                        <dd className="text-ink/80">{exp.target}</dd>
+                      </div>
+                      <div className="flex gap-5">
+                        <dt className="w-20 shrink-0 text-ink/50">体験料</dt>
+                        <dd className="text-ink/80">{exp.price}</dd>
+                      </div>
+                      <div className="flex gap-5">
+                        <dt className="w-20 shrink-0 text-ink/50">所要時間</dt>
+                        <dd className="text-ink/80">{exp.duration}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </div>
+
+                <div className="mt-10 rounded-3xl border border-ink/5 bg-snow p-7 md:p-9">
+                  <h3 className="font-serif text-base tracking-wide text-ink md:text-lg">
+                    体験のながれ
+                  </h3>
+                  <ol className="mt-5 space-y-3">
+                    {exp.steps.map((step, stepIndex) => (
                       <li
-                        key={point}
-                        className="flex items-baseline gap-3 text-sm text-ink/70"
+                        key={step}
+                        className="flex items-baseline gap-4 text-sm leading-relaxed text-ink/75"
                       >
-                        <span
-                          aria-hidden="true"
-                          className="h-1.5 w-1.5 shrink-0 translate-y-[-2px] rounded-full bg-primary/50"
-                        />
-                        {point}
+                        <span className="shrink-0 font-serif text-xs tracking-widest text-primary">
+                          {String(stepIndex + 1).padStart(2, "0")}
+                        </span>
+                        {step}
                       </li>
                     ))}
-                  </ul>
-                  <dl className="mt-7 space-y-2 rounded-2xl bg-snow p-6 text-sm">
-                    <div className="flex gap-5">
-                      <dt className="w-20 shrink-0 text-ink/50">所要時間</dt>
-                      <dd className="text-ink/80">{exp.duration}</dd>
-                    </div>
-                    <div className="flex gap-5">
-                      <dt className="w-20 shrink-0 text-ink/50">料金</dt>
-                      <dd className="text-ink/80">{exp.price}</dd>
-                    </div>
-                  </dl>
+                  </ol>
                 </div>
               </article>
             </Reveal>
@@ -114,7 +146,7 @@ export default function ExperiencePage() {
       <Flow />
       <ContactCta
         title="体験のご予約・ご相談"
-        lead="メニューの詳細や当日の空き状況は、お電話にてお気軽にお問い合わせください。"
+        lead="コース選びに迷ったら、お気軽にお電話ください。人数やご予定に合わせてご案内します。"
       />
     </>
   );

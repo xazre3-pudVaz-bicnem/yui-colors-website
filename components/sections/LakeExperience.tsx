@@ -11,8 +11,8 @@ export default function LakeExperience() {
         <Reveal>
           <SectionHeading
             eyebrow="Experience"
-            title="湖のほとりで楽しむ染め体験"
-            lead="琵琶湖のそばの静かな工房で、色を選び、布を染める。初めての方でも、ひとつずつ丁寧にご案内します。"
+            title="湖のほとりで楽しむ、べんがら染め3コース"
+            lead="土から生まれる自然由来の顔料「べんがら」で布を染める3つのコース。5・6歳のお子さまから参加でき、作品は当日お持ち帰りいただけます。"
           />
         </Reveal>
         <div className="grid gap-8 md:grid-cols-3">
@@ -26,11 +26,17 @@ export default function LakeExperience() {
                   sizes="(min-width: 768px) 30vw, 90vw"
                 />
                 <div className="p-7">
-                  <h3 className="font-serif text-lg tracking-wide text-ink">
+                  <p className="text-[11px] uppercase tracking-[0.3em] text-primary/60">
+                    Course {exp.course}
+                  </p>
+                  <h3 className="mt-2 font-serif text-lg tracking-wide text-ink">
                     {exp.title}
                   </h3>
                   <p className="mt-4 text-sm leading-loose text-ink/70">
                     {exp.description}
+                  </p>
+                  <p className="mt-5 border-t border-ink/5 pt-4 text-xs leading-relaxed text-ink/60">
+                    {exp.target}／{exp.duration}／{exp.price}
                   </p>
                 </div>
               </article>
