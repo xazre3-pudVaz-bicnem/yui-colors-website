@@ -268,7 +268,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-03-20",
     category: "観光",
     image: "/images/hero.jpg",
-    imageAlt: "琵琶湖を望む窓辺で、布に針を運ぶ染め体験の様子",
+    imageAlt: "青空の下に広がる琵琶湖と大津の湖岸",
     lead: "滋賀の旅は、琵琶湖を中心にゆったりと流れる時間が魅力です。その時間の使い方のひとつとして、クラフト体験を旅程に加えてみませんか。",
     sections: [
       {

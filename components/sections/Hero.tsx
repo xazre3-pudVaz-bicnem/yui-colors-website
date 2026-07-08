@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="water-drift absolute inset-0">
         <SmartImage
           src="/images/hero.jpg"
-          alt="琵琶湖を望む窓辺で、布に針を運ぶ染め体験の様子"
+          alt="青空の下に広がる琵琶湖と大津の湖岸の風景"
           className="h-full w-full"
           sizes="100vw"
           priority
