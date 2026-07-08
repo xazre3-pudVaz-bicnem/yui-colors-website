@@ -51,6 +51,9 @@ export default function ContactPage() {
                 営業時間：{site.hours}（定休日：{site.closed}）
               </p>
               <p className="mt-1 text-sm text-ink/70">
+                体験の時間枠：9:30〜／11:00〜／13:00〜／14:30〜（各枠1〜5名）
+              </p>
+              <p className="mt-1 text-sm text-ink/70">
                 メール：
                 <a
                   href={site.emailHref}

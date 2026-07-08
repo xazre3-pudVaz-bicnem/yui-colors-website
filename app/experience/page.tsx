@@ -12,6 +12,9 @@ import {
   experiences,
   bengaraIntro,
   experienceNote,
+  timeSlots,
+  capacityNote,
+  timeSlotNote,
 } from "@/data/experiences";
 
 export const metadata: Metadata = createMetadata({
@@ -131,6 +134,41 @@ export default function ExperiencePage() {
 
       <WaveDivider fill="#eaf5fb" />
       <section className="lake-gradient py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-5">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Schedule"
+              title="開催時間・ご参加人数"
+              lead="時間枠は1日4枠。ご予約の際に、ご希望の枠と人数をお知らせください。"
+            />
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="flex flex-wrap justify-center gap-3">
+              {timeSlots.map((slot, index) => (
+                <div
+                  key={slot}
+                  className="flex items-baseline gap-3 rounded-full bg-white px-7 py-3"
+                >
+                  <span className="font-serif text-xs tracking-widest text-primary/70">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-serif text-lg tracking-widest text-ink">
+                    {slot}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="mx-auto mt-8 max-w-xl text-center text-sm leading-loose text-ink/70">
+              {capacityNote}
+            </p>
+            <p className="mx-auto mt-3 max-w-xl text-center text-xs leading-relaxed text-ink/50">
+              {timeSlotNote}
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-5">
           <Reveal>
             <SectionHeading
