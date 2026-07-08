@@ -39,9 +39,11 @@ npm run lint   # ESLint
 写真がない間は自動的にプレースホルダーが表示されます。
 詳細は [public/images/README.md](public/images/README.md) を参照してください。
 
-## 公開前のTODO
+## 運用メモ
 
-- [ ] `data/site.ts` の `url` を本番ドメインに変更する（canonical / OGP / sitemap に反映されます）
-- [ ] 営業時間・定休日・料金・駐車場の確定情報を `data/site.ts` と `data/experiences.ts` に反映する
-- [ ] `public/images/` に実際の写真を配置する（`og-image.jpg` 含む）
-- [ ] お問い合わせフォームの送信処理を `app/api/contact/route.ts` に実装する
+- 本番ドメイン：https://someyuicolors.com（`data/site.ts` の `url`）
+- 営業時間・定休日・料金・アクセスなどの店舗情報は確定済み（`data/site.ts`・`data/experiences.ts`）
+- お問い合わせフォームは mailto 方式（some.yui.colors@gmail.com 宛）。
+  サーバー送信に切り替える場合は `app/api/contact/route.ts` に実装する
+- 文言ルール：店の自称は「工房」／染料の表現は「染み込む」（「にじむ」は使わない）／
+  体験メニューにハンカチは含まれない（トートバッグ・巾着・ストール）

@@ -10,8 +10,8 @@ export const site = {
   description:
     "滋賀県大津市真野の染め工房「染 YUI COLORS」。琵琶湖観光の立ち寄りに、親子の時間に、ふたりのデートに。自分だけの色を残す染色体験をお楽しみいただけます。",
 
-  // TODO: 本番ドメイン取得後に変更してください（canonical / OGP / sitemap に使用）
-  url: "https://yui-colors.example.com",
+  // 本番ドメイン（canonical / OGP / sitemap に使用）
+  url: "https://someyuicolors.com",
 
   tel: "080-5029-8467",
   telHref: "tel:080-5029-8467",
