@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand colors */
+  --color-primary: #0f5899;
+  --color-deep: #084f91;
+  --color-mist: #eaf5fb;
+  --color-base: #f8fbfc;
+  --color-ink: #1f2933;
+  --color-kinari: #f6f3eb;
+  --color-fog: #e7eef3;
+  --color-aisora: #bcd3e5;
+
+  /* Fonts (set by next/font in app/layout.tsx) */
+  --font-sans: var(--font-noto-sans), "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    sans-serif;
+  --font-serif: var(--font-mincho), "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  font-feature-settings: "palt";
+  letter-spacing: 0.02em;
+  line-height: 1.9;
+}
+
+::selection {
+  background-color: var(--color-aisora);
+  color: var(--color-ink);
+}
+
+/* 湖面を思わせるごく淡いグラデーションの帯 */
+.lake-gradient {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    var(--color-mist) 55%,
+    #ffffff 100%
+  );
+}
+
+.lake-gradient-soft {
+  background: linear-gradient(180deg, var(--color-base) 0%, #ffffff 100%);
+}
+
+/* 水面のゆらぎ（ヒーロー背景のフォールバック用） */
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -1.5%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.water-drift {
+  animation: drift 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .water-drift {
+    animation: none;
+  }
+}
