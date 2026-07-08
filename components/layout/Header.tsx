@@ -8,6 +8,9 @@ import { site, primaryNav, fullNav } from "@/data/site";
 
 /**
  * 固定ヘッダー。最上部では透過し、スクロールすると白背景が現れる。
+ *
+ * 注意: backdrop-filterを持つ要素はfixedな子孫の基準位置を変えてしまうため、
+ * ぼかし背景は子孫を持たない専用レイヤーに分離している（ドロワー崩れ防止）。
  */
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,6 +24,16 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // デスクトップ幅に切り替わったらドロワーを閉じる（背面スクロールロック解除のため）
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => {
+      if (mq.matches) setOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   // ドロワー表示中は背面のスクロールを止める
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -32,14 +45,16 @@ export default function Header() {
   const solid = scrolled || open;
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        solid
-          ? "border-b border-ink/5 bg-white/90 backdrop-blur-md"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20">
+    <header className="fixed inset-x-0 top-0 z-50">
+      {/* 白背景＋ぼかしのレイヤー（fixedな子孫を持たせない） */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 border-b border-ink/5 bg-white/90 backdrop-blur-md transition-opacity duration-300 ${
+          solid ? "opacity-100" : "opacity-0"
+        }`}
+      />
+
+      <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20">
         <Link href="/" className="group flex items-center gap-3">
           <Image
             src="/images/logo-mark.jpg"
@@ -84,7 +99,7 @@ export default function Header() {
           aria-expanded={open}
           aria-label={open ? "メニューを閉じる" : "メニューを開く"}
           onClick={() => setOpen((v) => !v)}
-          className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden"
+          className="relative flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden"
         >
           <span
             className={`block h-px w-6 bg-ink transition-transform duration-300 ${
@@ -99,16 +114,13 @@ export default function Header() {
         </button>
       </div>
 
-      {/* モバイルドロワー */}
+      {/* モバイルドロワー（ヘッダー下端から画面下端まで） */}
       <div
-        className={`fixed inset-0 top-16 z-40 bg-white transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto bg-white transition-opacity duration-300 md:top-20 lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <nav
-          aria-label="モバイルナビゲーション"
-          className="flex h-full flex-col overflow-y-auto px-8 pb-24 pt-8"
-        >
+        <nav aria-label="モバイルナビゲーション" className="px-8 pb-24 pt-8">
           <ul className="space-y-1">
             {fullNav.map((item) => (
               <li key={item.href}>
