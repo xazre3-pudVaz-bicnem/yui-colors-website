@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-06-24",
     category: "観光",
     image: "/images/lake.jpg",
-    imageAlt: "琵琶湖の穏やかな湖面と空のイメージ",
+    imageAlt: "夕暮れに染まる琵琶湖と対岸の山なみ",
     lead: "大津市の観光といえば、琵琶湖や比叡山、三井寺などの名所を思い浮かべる方が多いかもしれません。そこにもうひとつ、「手を動かして色を残す時間」を加えてみると、旅の印象は大きく変わります。",
     sections: [
       {
@@ -64,7 +64,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-06-10",
     category: "親子",
     image: "/images/kids.jpg",
-    imageAlt: "親子で布を染めている体験教室の様子",
+    imageAlt: "桜の模様を絞り染めした、色とりどりの巾着袋",
     lead: "「大津で子供と一緒に楽しめる場所はないかな」。そんなふうに探している方に知っていただきたいのが、親子で参加できる染め体験です。遊園地とも公園とも違う、静かで濃い時間が流れます。",
     sections: [
       {
@@ -98,7 +98,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-05-28",
     category: "観光",
     image: "/images/dyeing-01.jpg",
-    imageAlt: "染料が布ににじんで広がっていく様子",
+    imageAlt: "藍から浅葱へ、グラデーションに染め上げたストール",
     lead: "琵琶湖をめぐる旅の途中、ふと「何か形に残るものがあれば」と思うことはありませんか。湖のそばの小さな工房で布を染める時間は、そんな旅の余白にちょうどよく収まります。",
     sections: [
       {
@@ -132,7 +132,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-05-15",
     category: "デート",
     image: "/images/date.jpg",
-    imageAlt: "ふたりで並んで染め体験を楽しむ様子",
+    imageAlt: "琵琶湖を望む窓辺で、ふたり並んで絞りの作業をする様子",
     lead: "映画や食事のデートも良いけれど、たまには「ふたりで何かを作る」時間を過ごしてみませんか。大津市の染め体験は、落ち着いた雰囲気の中で自然と会話が生まれる、大人のデートに向いた体験です。",
     sections: [
       {
@@ -166,7 +166,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-30",
     category: "観光",
     image: "/images/workshop-02.jpg",
-    imageAlt: "屋内の工房で作品を仕上げている様子",
+    imageAlt: "水色に絞り模様を染め上げたトートバッグ",
     lead: "旅行の日に限って雨予報。外を歩く観光が難しい日は、予定を無理に決行するより、屋内でゆっくり過ごせる体験に切り替えるのがおすすめです。",
     sections: [
       {
@@ -200,7 +200,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-18",
     category: "はじめての方へ",
     image: "/images/workshop-01.jpg",
-    imageAlt: "染め体験で使う染料と白い布",
+    imageAlt: "白い布に絞りの糸を入れて、染めの模様を仕込んでいる様子",
     lead: "「不器用だけど大丈夫かな」「何を準備すればいいのかな」。初めての染め体験には、小さな不安がつきものです。このページでは、はじめての方が安心して参加できるよう、よくある疑問にお答えします。",
     sections: [
       {
@@ -234,7 +234,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-05",
     category: "親子",
     image: "/images/kids.jpg",
-    imageAlt: "子供が染め上げた色とりどりの布",
+    imageAlt: "桜の模様を絞り染めした、色とりどりの巾着袋",
     lead: "同じ色の染料を使っても、布への浸し方や時間のかけ方で、仕上がりは一人ひとり変わります。親子で並んで染めた二枚の布が、少しずつ違う色になる。その違いにこそ、体験の意味があります。",
     sections: [
       {
@@ -268,7 +268,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-03-20",
     category: "観光",
     image: "/images/hero.jpg",
-    imageAlt: "湖のほとりの工房のイメージ",
+    imageAlt: "琵琶湖を望む窓辺で、布に針を運ぶ染め体験の様子",
     lead: "滋賀の旅は、琵琶湖を中心にゆったりと流れる時間が魅力です。その時間の使い方のひとつとして、クラフト体験を旅程に加えてみませんか。",
     sections: [
       {

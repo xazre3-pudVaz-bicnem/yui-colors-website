@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { site, primaryNav, fullNav } from "@/data/site";
@@ -39,10 +40,15 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20">
-        <Link href="/" className="group flex items-baseline gap-3">
-          <span className="font-serif text-xl tracking-widest text-ink md:text-2xl">
-            染
-          </span>
+        <Link href="/" className="group flex items-center gap-3">
+          <Image
+            src="/images/logo-mark.jpg"
+            alt={`${site.name}のロゴ`}
+            width={44}
+            height={44}
+            priority
+            className="h-10 w-10 rounded-full mix-blend-multiply md:h-11 md:w-11"
+          />
           <span className="text-sm uppercase tracking-[0.3em] text-ink md:text-base">
             YUI COLORS
           </span>

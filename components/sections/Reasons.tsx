@@ -16,7 +16,7 @@ export default function Reasons() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {reasons.map((reason, index) => (
             <Reveal key={reason.title} delay={index * 90}>
-              <div className="h-full rounded-3xl border border-ink/5 bg-base p-8">
+              <div className="h-full rounded-3xl border border-ink/5 bg-snow p-8">
                 <p className="font-serif text-3xl text-aisora">
                   {String(index + 1).padStart(2, "0")}
                 </p>

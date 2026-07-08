@@ -29,7 +29,7 @@ export const experiences: Experience[] = [
     duration: "確認中（お問い合わせください）",
     price: "お問い合わせください",
     image: "/images/workshop-01.jpg",
-    imageAlt: "白い布に染料で色を重ねるハンカチ染め体験のイメージ",
+    imageAlt: "白い布に絞りの糸を入れて、染めの模様を仕込んでいる様子",
   },
   {
     slug: "bag",
@@ -44,7 +44,7 @@ export const experiences: Experience[] = [
     duration: "確認中（お問い合わせください）",
     price: "お問い合わせください",
     image: "/images/workshop-02.jpg",
-    imageAlt: "染め上げたトートバッグを乾かしている様子のイメージ",
+    imageAlt: "水色に絞り模様を染め上げたトートバッグ",
   },
   {
     slug: "stole",
@@ -59,7 +59,7 @@ export const experiences: Experience[] = [
     duration: "確認中（お問い合わせください）",
     price: "お問い合わせください",
     image: "/images/dyeing-01.jpg",
-    imageAlt: "染料に浸したストールに色がにじんで広がるイメージ",
+    imageAlt: "藍から浅葱へ、グラデーションに染め上げたストール",
   },
 ];
 

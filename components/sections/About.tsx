@@ -36,7 +36,7 @@ export default function About() {
         <Reveal delay={150}>
           <SmartImage
             src="/images/dyeing-01.jpg"
-            alt="染料に浸した布に色が広がっていく様子"
+            alt="藍から浅葱へ、グラデーションに染め上げたストール"
             className="aspect-[4/5] rounded-t-full rounded-b-3xl"
             sizes="(min-width: 768px) 45vw, 90vw"
           />

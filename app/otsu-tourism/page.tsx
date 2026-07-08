@@ -66,7 +66,7 @@ export default function OtsuTourismPage() {
           <Reveal>
             <SmartImage
               src="/images/lake.jpg"
-              alt="琵琶湖の穏やかな湖面と湖西の風景"
+              alt="夕暮れに染まる琵琶湖と対岸の山なみ"
               className="aspect-[16/9] rounded-3xl md:aspect-[21/9]"
               sizes="(min-width: 768px) 90vw, 100vw"
             />

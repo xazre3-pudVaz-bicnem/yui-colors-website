@@ -35,7 +35,7 @@ export default function BlogPage() {
         ]}
       />
 
-      <section className="bg-base py-16 md:py-24">
+      <section className="bg-snow py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 sm:grid-cols-2 lg:grid-cols-3">
           {sortedPosts.map((post, index) => (
             <Reveal key={post.slug} delay={(index % 3) * 90}>

@@ -17,7 +17,7 @@ export const scenes: Scene[] = [
     description:
       "小さな手で色を選び、布に染めていく時間は、子供にとって忘れられない体験になります。大津市で親子の思い出づくりを探している方に。",
     image: "/images/kids.jpg",
-    imageAlt: "親子で染め体験を楽しむ様子のイメージ",
+    imageAlt: "桜の模様を絞り染めした、色とりどりの巾着袋",
   },
   {
     href: "/date",
@@ -26,7 +26,7 @@ export const scenes: Scene[] = [
     description:
       "静かな工房で、ふたりでひとつずつ色を選ぶ。にぎやかな観光地とはひと味違う、落ち着いた大津デートの過ごし方です。",
     image: "/images/date.jpg",
-    imageAlt: "カップルで並んで染め体験をする様子のイメージ",
+    imageAlt: "琵琶湖を望む窓辺で、ふたり並んで絞りの作業をする様子",
   },
   {
     href: "/otsu-tourism",
@@ -35,7 +35,7 @@ export const scenes: Scene[] = [
     description:
       "琵琶湖や比叡山など、大津観光のあいまに立ち寄れる体験教室。旅の途中に、形に残る思い出をひとつ加えませんか。",
     image: "/images/lake.jpg",
-    imageAlt: "琵琶湖の穏やかな湖面のイメージ",
+    imageAlt: "夕暮れに染まる琵琶湖と対岸の山なみ",
   },
   {
     href: "/experience",
@@ -44,6 +44,6 @@ export const scenes: Scene[] = [
     description:
       "染め体験はすべて屋内で楽しめます。予定していた観光が雨で難しくなった日も、ゆっくり色と向き合う時間に変えられます。",
     image: "/images/dyeing-01.jpg",
-    imageAlt: "屋内の工房で染料と布に向き合うイメージ",
+    imageAlt: "藍から浅葱へ、グラデーションに染め上げたストール",
   },
 ];

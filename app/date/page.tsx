@@ -85,7 +85,7 @@ export default function DatePage() {
           <Reveal>
             <SmartImage
               src="/images/date.jpg"
-              alt="ふたりで並んで染め体験を楽しむ様子"
+              alt="琵琶湖を望む窓辺で、ふたり並んで絞りの作業をする様子"
               className="aspect-[16/9] rounded-3xl md:aspect-[21/9]"
               sizes="(min-width: 768px) 90vw, 100vw"
             />
@@ -100,7 +100,7 @@ export default function DatePage() {
             <div className="grid gap-6 md:grid-cols-2">
               {datePoints.map((point, index) => (
                 <Reveal key={point.title} delay={index * 90}>
-                  <div className="h-full rounded-3xl border border-ink/5 bg-base p-8">
+                  <div className="h-full rounded-3xl border border-ink/5 bg-snow p-8">
                     <h3 className="font-serif text-lg leading-relaxed tracking-wide text-ink">
                       {point.title}
                     </h3>

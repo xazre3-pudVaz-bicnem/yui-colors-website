@@ -153,7 +153,7 @@ export default function AccessPage() {
             <div className="mt-14">
               <SmartImage
                 src="/images/access.jpg"
-                alt="大津市真野周辺、琵琶湖湖西エリアの風景"
+                alt="木の外壁にロゴ看板を掲げた、染 YUI COLORSの入り口"
                 className="aspect-[21/9] rounded-3xl"
                 sizes="90vw"
               />

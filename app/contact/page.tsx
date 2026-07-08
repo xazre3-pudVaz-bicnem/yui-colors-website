@@ -29,7 +29,7 @@ export default function ContactPage() {
         ]}
       />
 
-      <section className="bg-base py-16 md:py-24">
+      <section className="bg-snow py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-5">
           <Reveal>
             <div className="rounded-3xl bg-mist p-8 text-center md:p-10">

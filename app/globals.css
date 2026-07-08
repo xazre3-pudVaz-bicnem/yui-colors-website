@@ -5,7 +5,8 @@
   --color-primary: #0f5899;
   --color-deep: #084f91;
   --color-mist: #eaf5fb;
-  --color-base: #f8fbfc;
+  /* 注意: "base" という名前は text-base（フォントサイズ）と衝突するため使わない */
+  --color-snow: #f8fbfc;
   --color-ink: #1f2933;
   --color-kinari: #f6f3eb;
   --color-fog: #e7eef3;
@@ -22,7 +23,7 @@ html {
 }
 
 body {
-  background-color: var(--color-base);
+  background-color: var(--color-snow);
   color: var(--color-ink);
   font-feature-settings: "palt";
   letter-spacing: 0.02em;
@@ -45,7 +46,7 @@ body {
 }
 
 .lake-gradient-soft {
-  background: linear-gradient(180deg, var(--color-base) 0%, #ffffff 100%);
+  background: linear-gradient(180deg, var(--color-snow) 0%, #ffffff 100%);
 }
 
 /* 水面のゆらぎ（ヒーロー背景のフォールバック用） */

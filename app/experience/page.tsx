@@ -75,7 +75,7 @@ export default function ExperiencePage() {
                       </li>
                     ))}
                   </ul>
-                  <dl className="mt-7 space-y-2 rounded-2xl bg-base p-6 text-sm">
+                  <dl className="mt-7 space-y-2 rounded-2xl bg-snow p-6 text-sm">
                     <div className="flex gap-5">
                       <dt className="w-20 shrink-0 text-ink/50">所要時間</dt>
                       <dd className="text-ink/80">{exp.duration}</dd>

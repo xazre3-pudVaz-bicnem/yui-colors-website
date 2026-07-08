@@ -20,7 +20,7 @@ export default function Scenes() {
             <Reveal key={scene.href + scene.title} delay={index * 100}>
               <Link
                 href={scene.href}
-                className="group block overflow-hidden rounded-3xl border border-ink/5 bg-base transition-shadow duration-300 hover:shadow-[0_8px_40px_-16px_rgba(15,88,153,0.25)]"
+                className="group block overflow-hidden rounded-3xl border border-ink/5 bg-snow transition-shadow duration-300 hover:shadow-[0_8px_40px_-16px_rgba(15,88,153,0.25)]"
               >
                 <div className="overflow-hidden">
                   <SmartImage

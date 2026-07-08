@@ -38,7 +38,7 @@ export default function FaqPage() {
         ]}
       />
 
-      <section className="bg-base py-16 md:py-24">
+      <section className="bg-snow py-16 md:py-24">
         <div className="mx-auto max-w-3xl space-y-14 px-5">
           {categories.map((category) => (
             <Reveal key={category}>

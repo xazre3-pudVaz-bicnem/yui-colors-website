@@ -70,7 +70,7 @@ export default function KidsPage() {
           <Reveal>
             <SmartImage
               src="/images/kids.jpg"
-              alt="親子で一緒に布を染めている体験の様子"
+              alt="桜の模様を絞り染めした、色とりどりの巾着袋"
               className="aspect-[16/9] rounded-3xl md:aspect-[21/9]"
               sizes="(min-width: 768px) 90vw, 100vw"
             />
@@ -85,7 +85,7 @@ export default function KidsPage() {
             <div className="grid gap-6 md:grid-cols-2">
               {kidsPoints.map((point, index) => (
                 <Reveal key={point.title} delay={index * 90}>
-                  <div className="h-full rounded-3xl border border-ink/5 bg-base p-8">
+                  <div className="h-full rounded-3xl border border-ink/5 bg-snow p-8">
                     <h3 className="font-serif text-lg leading-relaxed tracking-wide text-ink">
                       {point.title}
                     </h3>

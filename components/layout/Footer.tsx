@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site, fullNav } from "@/data/site";
 
 export default function Footer() {
@@ -7,17 +8,23 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.2fr_1fr]">
           <div>
-            <Link href="/" className="flex items-baseline gap-3">
-              <span className="font-serif text-2xl tracking-widest text-ink">
-                染
-              </span>
-              <span className="text-base uppercase tracking-[0.3em] text-ink">
-                YUI COLORS
+            <Link href="/" className="flex items-center gap-4">
+              <Image
+                src="/images/logo-mark.jpg"
+                alt={`${site.name}のロゴ`}
+                width={56}
+                height={56}
+                className="h-14 w-14 rounded-full mix-blend-multiply"
+              />
+              <span>
+                <span className="block text-base uppercase tracking-[0.3em] text-ink">
+                  YUI COLORS
+                </span>
+                <span className="mt-1 block text-xs tracking-widest text-ink/50">
+                  {site.nameReading}
+                </span>
               </span>
             </Link>
-            <p className="mt-2 text-xs tracking-widest text-ink/50">
-              {site.nameReading}
-            </p>
             <div className="mt-8 space-y-2 text-sm leading-relaxed text-ink/70">
               <p>{site.address.full}</p>
               <p>

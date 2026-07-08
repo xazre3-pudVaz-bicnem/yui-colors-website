@@ -126,7 +126,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </article>
 
-      <section className="bg-base py-16 md:py-20">
+      <section className="bg-snow py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-5">
           <h2 className="mb-8 text-center font-serif text-xl tracking-wide text-ink">
             あわせて読みたい
