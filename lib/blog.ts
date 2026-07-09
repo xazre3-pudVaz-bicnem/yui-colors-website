@@ -143,6 +143,16 @@ export function getPostsByCategory(categoryName: string): UnifiedPost[] {
   return getAllPosts().filter((post) => post.category === categoryName);
 }
 
+/** 関連記事（同カテゴリを優先し、足りなければ新しい記事で補う） */
+export function getRelatedPosts(current: UnifiedPost, limit = 3): UnifiedPost[] {
+  const others = getAllPosts().filter((post) => post.slug !== current.slug);
+  const sameCategory = others.filter(
+    (post) => post.category === current.category
+  );
+  const rest = others.filter((post) => post.category !== current.category);
+  return [...sameCategory, ...rest].slice(0, limit);
+}
+
 /** 記事が1件以上あるカテゴリのみ返す */
 export function getActiveCategories() {
   const posts = getAllPosts();

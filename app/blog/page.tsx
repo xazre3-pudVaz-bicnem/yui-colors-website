@@ -4,6 +4,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import BlogPostGrid from "@/components/ui/BlogPostGrid";
 import CategoryNav from "@/components/ui/CategoryNav";
 import ContactCta from "@/components/sections/ContactCta";
+import { JsonLd, blogListingJsonLd } from "@/lib/jsonld";
 import { createMetadata } from "@/lib/meta";
 import { getAllPosts } from "@/lib/blog";
 
@@ -24,6 +25,7 @@ export default function BlogPage() {
 
   return (
     <>
+      <JsonLd data={blogListingJsonLd(posts)} />
       <PageHero
         eyebrow="Journal"
         title="お知らせ・ブログ"

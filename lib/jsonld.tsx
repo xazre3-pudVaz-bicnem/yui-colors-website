@@ -97,7 +97,13 @@ export function articleJsonLd(post: {
   description: string;
   date: string;
   image: string;
+  category?: string;
+  tags?: string[];
 }) {
+  const keywords = [post.category, ...(post.tags ?? [])].filter(
+    (value): value is string => Boolean(value)
+  );
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -106,8 +112,62 @@ export function articleJsonLd(post: {
     datePublished: post.date,
     dateModified: post.date,
     image: `${site.url}${post.image}`,
-    mainEntityOfPage: `${site.url}/blog/${post.slug}`,
-    author: { "@type": "Organization", name: site.name },
-    publisher: { "@type": "Organization", name: site.name },
+    articleSection: post.category,
+    keywords: keywords.length > 0 ? keywords.join(", ") : undefined,
+    inLanguage: "ja",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${site.url}/blog/${post.slug}`,
+    },
+    author: { "@type": "Organization", name: site.name, url: site.url },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/images/logo-mark.jpg`,
+      },
+    },
+  };
+}
+
+/** サイト全体を表す WebSite スキーマ（全ページのフッターに埋め込む） */
+export function webSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    name: site.name,
+    alternateName: site.nameReading,
+    url: site.url,
+    inLanguage: "ja",
+    publisher: { "@id": `${site.url}/#localbusiness` },
+  };
+}
+
+/** ブログ一覧ページの Blog スキーマ（記事のItemListを内包） */
+export function blogListingJsonLd(
+  posts: {
+    slug: string;
+    title: string;
+    description: string;
+    date: string;
+  }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${site.url}/blog/#blog`,
+    name: `${site.name}のお知らせ・ブログ`,
+    url: `${site.url}/blog`,
+    inLanguage: "ja",
+    publisher: { "@id": `${site.url}/#localbusiness` },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      url: `${site.url}/blog/${post.slug}`,
+    })),
   };
 }

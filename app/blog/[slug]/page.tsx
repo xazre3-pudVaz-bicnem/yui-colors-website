@@ -9,7 +9,12 @@ import Reveal from "@/components/ui/Reveal";
 import ContactCta from "@/components/sections/ContactCta";
 import { JsonLd, articleJsonLd } from "@/lib/jsonld";
 import { createMetadata } from "@/lib/meta";
-import { getAllPosts, getPostBySlug, formatDate } from "@/lib/blog";
+import {
+  getAllPosts,
+  getPostBySlug,
+  getRelatedPosts,
+  formatDate,
+} from "@/lib/blog";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -27,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
+    keywords: post.tags.length > 0 ? post.tags : undefined,
     ogImage: post.image,
     type: "article",
   });
@@ -95,13 +101,21 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = getAllPosts()
-    .filter((p) => p.slug !== post.slug)
-    .slice(0, 3);
+  const related = getRelatedPosts(post, 3);
 
   return (
     <>
-      <JsonLd data={articleJsonLd(post)} />
+      <JsonLd
+        data={articleJsonLd({
+          slug: post.slug,
+          title: post.title,
+          description: post.description,
+          date: post.date,
+          image: post.image,
+          category: post.category,
+          tags: post.tags,
+        })}
+      />
       <div className="lake-gradient pb-10 pt-32 md:pt-44">
         <div className="mx-auto max-w-3xl px-5">
           <Reveal>
@@ -178,8 +192,23 @@ export default async function BlogPostPage({ params }: Props) {
             </>
           )}
 
+          {post.tags.length > 0 && (
+            <Reveal>
+              <div className="mt-10 flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-snow px-4 py-1.5 text-xs tracking-wider text-ink/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+          )}
+
           <Reveal>
-            <div className="mt-16 rounded-3xl bg-mist p-8 md:p-10">
+            <div className="mt-12 rounded-3xl bg-mist p-8 md:p-10">
               <p className="font-serif text-lg tracking-wide text-ink">
                 大津市・真野で染め体験を
               </p>

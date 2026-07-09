@@ -3,7 +3,7 @@ import { Noto_Sans_JP, Shippori_Mincho } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { JsonLd, localBusinessJsonLd } from "@/lib/jsonld";
+import { JsonLd, localBusinessJsonLd, webSiteJsonLd } from "@/lib/jsonld";
 import { site } from "@/data/site";
 
 const notoSans = Noto_Sans_JP({
@@ -34,6 +34,11 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   formatDetection: { telephone: false },
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -48,6 +53,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col font-sans">
         <JsonLd data={localBusinessJsonLd()} />
+        <JsonLd data={webSiteJsonLd()} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
