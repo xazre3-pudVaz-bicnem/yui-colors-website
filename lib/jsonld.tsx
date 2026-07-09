@@ -1,4 +1,5 @@
 import { site } from "@/data/site";
+import { experiences } from "@/data/experiences";
 
 /** JSON-LDを安全に埋め込む共通コンポーネント */
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -11,9 +12,11 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 }
 
 export function localBusinessJsonLd() {
+  const minPrice = Math.min(...experiences.map((exp) => exp.priceValue));
+
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "TouristAttraction"],
     "@id": `${site.url}/#localbusiness`,
     name: site.name,
     alternateName: site.nameReading,
@@ -21,6 +24,11 @@ export function localBusinessJsonLd() {
     url: site.url,
     telephone: site.tel,
     email: site.email,
+    image: `${site.url}/images/og-image.jpg`,
+    logo: `${site.url}/images/logo-mark.jpg`,
+    hasMap: site.mapUrl,
+    priceRange: `¥${minPrice.toLocaleString("en-US")}〜`,
+    currenciesAccepted: "JPY",
     address: {
       "@type": "PostalAddress",
       postalCode: site.address.postal,
@@ -37,7 +45,27 @@ export function localBusinessJsonLd() {
         closes: "17:00",
       },
     ],
-    areaServed: ["大津市", "滋賀県", "琵琶湖周辺"],
+    areaServed: ["大津市", "滋賀県", "琵琶湖周辺", "堅田", "雄琴"],
+    makesOffer: experiences.map((exp) => ({
+      "@type": "Offer",
+      priceCurrency: "JPY",
+      price: exp.priceValue,
+      ...(exp.priceFrom
+        ? {
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: exp.priceValue,
+              priceCurrency: "JPY",
+            },
+          }
+        : {}),
+      itemOffered: {
+        "@type": "Service",
+        name: exp.title,
+        description: exp.description,
+        serviceType: "染め体験",
+      },
+    })),
     sameAs: [site.instagram.url],
   };
 }

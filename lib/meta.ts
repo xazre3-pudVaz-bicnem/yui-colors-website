@@ -8,6 +8,13 @@ type PageMetaInput = {
   keywords?: string[];
   ogImage?: string;
   type?: "website" | "article";
+  /** type: "article" のときのOGP補足情報 */
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    section?: string;
+    tags?: string[];
+  };
 };
 
 /**
@@ -21,23 +28,37 @@ export function createMetadata({
   keywords,
   ogImage = "/images/og-image.jpg",
   type = "website",
+  article,
 }: PageMetaInput): Metadata {
   const url = `${site.url}${path}`;
+
+  const openGraph: NonNullable<Metadata["openGraph"]> = {
+    title: `${title}｜${site.name}`,
+    description,
+    url,
+    siteName: site.name,
+    images: [{ url: ogImage, width: 1200, height: 630 }],
+    locale: "ja_JP",
+    type,
+  };
+
+  if (type === "article" && article) {
+    Object.assign(openGraph, {
+      type: "article",
+      publishedTime: article.publishedTime,
+      modifiedTime: article.modifiedTime ?? article.publishedTime,
+      section: article.section,
+      tags: article.tags,
+      authors: [site.name],
+    });
+  }
 
   return {
     title,
     description,
     keywords,
     alternates: { canonical: url },
-    openGraph: {
-      title: `${title}｜${site.name}`,
-      description,
-      url,
-      siteName: site.name,
-      images: [{ url: ogImage, width: 1200, height: 630 }],
-      locale: "ja_JP",
-      type,
-    },
+    openGraph,
     twitter: {
       card: "summary_large_image",
       title: `${title}｜${site.name}`,

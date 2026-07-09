@@ -7,6 +7,7 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import WaveDivider from "@/components/ui/WaveDivider";
 import ContactCta from "@/components/sections/ContactCta";
+import RelatedArticles from "@/components/ui/RelatedArticles";
 import { createMetadata } from "@/lib/meta";
 
 export const metadata: Metadata = createMetadata({
@@ -134,6 +135,7 @@ export default function OtsuTourismPage() {
         </div>
       </section>
 
+      <RelatedArticles category="観光" />
       <ContactCta
         title="旅程に合わせて、ご案内します"
         lead="観光のご予定やご宿泊先に合わせた立ち寄り方をご提案できます。お気軽にお電話ください。"

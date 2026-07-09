@@ -9,6 +9,10 @@ export type Experience = {
   title: string;
   target: string;
   price: string;
+  /** 構造化データ用の数値の最低料金（円） */
+  priceValue: number;
+  /** 「〜」など基準料金から変動する場合 true */
+  priceFrom: boolean;
   duration: string;
   description: string;
   steps: string[];
@@ -27,6 +31,8 @@ export const experiences: Experience[] = [
     title: "簡単絞り染めコース",
     target: "5・6歳のお子さまから",
     price: "お一人 1,500円",
+    priceValue: 1500,
+    priceFrom: false,
     duration: "約1時間",
     description:
       "輪ゴムやビー玉、おはじき、紐を使って、トートバッグや巾着の絞り染めに挑戦するコースです。身近な素材を使って布を絞るだけなので、初めての方も小さなお子さまも気軽に楽しめます。ほどいた瞬間にあらわれる模様は、毎回違う一度きりの表情です。",
@@ -51,6 +57,8 @@ export const experiences: Experience[] = [
     title: "ストール染めコース",
     target: "5・6歳のお子さまから",
     price: "お一人 2,800円〜（ストールの種類により異なります）",
+    priceValue: 2800,
+    priceFrom: true,
     duration: "約1時間",
     description:
       "べんがらの色を混ぜ合わせて、お好きな色でストールを染めるコースです。色を重ねたり、グラデーションを施したり。湖面の色をうつしたような、身につけて使える一枚が仕上がります。",
@@ -73,6 +81,8 @@ export const experiences: Experience[] = [
     title: "「傘巻き絞り」コース",
     target: "小学5・6年生から",
     price: "お一人 2,300円〜（トートバッグ・巾着の種類により異なります）",
+    priceValue: 2300,
+    priceFrom: true,
     duration: "2時間〜2時間30分（時間枠を2枠利用します）",
     description:
       "京都の伝統工芸・鹿の子絞りの一種である「傘巻き絞り」に気軽にチャレンジしていただけるコースです。針と糸で模様を縫い、本格絞り台を使って絞り上げます。花などの自然物や滋賀ゆかりの模様から好きな柄を選んで、トートバッグや巾着を染め上げます。",

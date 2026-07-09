@@ -7,6 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import WaveDivider from "@/components/ui/WaveDivider";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import ContactCta from "@/components/sections/ContactCta";
+import RelatedArticles from "@/components/ui/RelatedArticles";
 import { JsonLd, faqJsonLd } from "@/lib/jsonld";
 import { createMetadata } from "@/lib/meta";
 import { faqItems } from "@/data/faq";
@@ -115,6 +116,7 @@ export default function KidsPage() {
         </div>
       </section>
 
+      <RelatedArticles category="親子" />
       <ContactCta
         title="親子でのご参加、お待ちしています"
         lead="お子さまの年齢やご希望の日時に合わせてご案内します。まずはお電話でお気軽にご相談ください。"

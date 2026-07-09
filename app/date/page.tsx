@@ -6,6 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import WaveDivider from "@/components/ui/WaveDivider";
 import ContactCta from "@/components/sections/ContactCta";
+import RelatedArticles from "@/components/ui/RelatedArticles";
 import { createMetadata } from "@/lib/meta";
 
 export const metadata: Metadata = createMetadata({
@@ -191,6 +192,7 @@ export default function DatePage() {
         </div>
       </section>
 
+      <RelatedArticles category="デート" />
       <ContactCta
         title="おふたりでも、仲間とでも"
         lead="記念日のご利用や、女子旅グループでのご参加のご相談も承ります。お電話でお気軽にどうぞ。"

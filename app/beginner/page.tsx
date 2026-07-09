@@ -7,6 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import WaveDivider from "@/components/ui/WaveDivider";
 import Flow from "@/components/sections/Flow";
 import ContactCta from "@/components/sections/ContactCta";
+import RelatedArticles from "@/components/ui/RelatedArticles";
 import { createMetadata } from "@/lib/meta";
 
 export const metadata: Metadata = createMetadata({
@@ -120,6 +121,7 @@ export default function BeginnerPage() {
       </section>
 
       <Flow />
+      <RelatedArticles category="はじめての方へ" />
       <ContactCta
         title="はじめの一歩は、お電話から"
         lead="ご不安な点はどんな小さなことでも構いません。お気軽にお問い合わせください。"

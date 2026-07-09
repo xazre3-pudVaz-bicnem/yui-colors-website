@@ -3,36 +3,40 @@ import { site } from "@/data/site";
 import { getAllPosts, getActiveCategories } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const base = site.url;
+
   const staticPages: MetadataRoute.Sitemap = [
-    { path: "/", priority: 1.0 },
-    { path: "/experience", priority: 0.9 },
-    { path: "/kids", priority: 0.8 },
-    { path: "/date", priority: 0.8 },
-    { path: "/otsu-tourism", priority: 0.8 },
-    { path: "/beginner", priority: 0.7 },
-    { path: "/access", priority: 0.8 },
+    { path: "/", priority: 1.0, image: "/images/hero.jpg" },
+    { path: "/experience", priority: 0.9, image: "/images/workshop-02.jpg" },
+    { path: "/kids", priority: 0.8, image: "/images/kids.jpg" },
+    { path: "/date", priority: 0.8, image: "/images/date.jpg" },
+    { path: "/otsu-tourism", priority: 0.8, image: "/images/lake.jpg" },
+    { path: "/beginner", priority: 0.7, image: "/images/workshop-01.jpg" },
+    { path: "/access", priority: 0.8, image: "/images/access.jpg" },
     { path: "/faq", priority: 0.7 },
     { path: "/blog", priority: 0.7 },
     { path: "/contact", priority: 0.7 },
-  ].map(({ path, priority }) => ({
-    url: `${site.url}${path}`,
+  ].map(({ path, priority, image }) => ({
+    url: `${base}${path}`,
     changeFrequency: "monthly" as const,
     priority,
+    ...(image ? { images: [`${base}${image}`] } : {}),
   }));
 
   const categoryPages: MetadataRoute.Sitemap = getActiveCategories().map(
     (category) => ({
-      url: `${site.url}/blog/category/${category.slug}`,
+      url: `${base}/blog/category/${category.slug}`,
       changeFrequency: "weekly" as const,
       priority: 0.5,
     })
   );
 
   const blogPages: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: `${site.url}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(`${post.date}T09:00:00+09:00`),
     changeFrequency: "yearly" as const,
     priority: 0.6,
+    images: [`${base}${post.image}`],
   }));
 
   return [...staticPages, ...categoryPages, ...blogPages];

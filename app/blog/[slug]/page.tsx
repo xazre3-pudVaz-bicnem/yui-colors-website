@@ -35,6 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: post.tags.length > 0 ? post.tags : undefined,
     ogImage: post.image,
     type: "article",
+    article: {
+      publishedTime: post.date,
+      section: post.category,
+      tags: post.tags,
+    },
   });
 }
 
