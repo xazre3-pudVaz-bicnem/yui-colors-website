@@ -27,7 +27,7 @@ export function localBusinessJsonLd() {
     image: `${site.url}/images/og-image.jpg`,
     logo: `${site.url}/images/logo-mark.jpg`,
     hasMap: site.mapUrl,
-    priceRange: `¥${minPrice.toLocaleString("en-US")}〜`,
+    priceRange: `¥${minPrice.toLocaleString("en-US")}〜（税別）`,
     currenciesAccepted: "JPY",
     address: {
       "@type": "PostalAddress",
@@ -50,15 +50,15 @@ export function localBusinessJsonLd() {
       "@type": "Offer",
       priceCurrency: "JPY",
       price: exp.priceValue,
-      ...(exp.priceFrom
-        ? {
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              minPrice: exp.priceValue,
-              priceCurrency: "JPY",
-            },
-          }
-        : {}),
+      // 表示料金はすべて税別
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "JPY",
+        valueAddedTaxIncluded: false,
+        ...(exp.priceFrom
+          ? { minPrice: exp.priceValue }
+          : { price: exp.priceValue }),
+      },
       itemOffered: {
         "@type": "Service",
         name: exp.title,

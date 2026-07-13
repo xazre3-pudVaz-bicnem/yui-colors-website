@@ -18,9 +18,9 @@ import {
 } from "@/data/experiences";
 
 export const metadata: Metadata = createMetadata({
-  title: "体験内容｜べんがら染め体験3コース（1,500円〜）",
+  title: "体験内容｜べんがら染め体験3コース（1,500円〜・税別）",
   description:
-    "染 YUI COLORSのべんがら染め体験は3コース。簡単絞り染め（1,500円・5歳〜）、ストール染め、京都の伝統技法に挑戦する傘巻き絞り。作品は当日お持ち帰りいただけます。",
+    "染 YUI COLORSのべんがら染め体験は3コース。簡単絞り染めは1,500円（税別）・5歳から、ほかにストール染め、京都の伝統技法に挑戦する傘巻き絞り。作品は当日お持ち帰りいただけます。",
   path: "/experience",
   keywords: [
     "大津市 染め体験",

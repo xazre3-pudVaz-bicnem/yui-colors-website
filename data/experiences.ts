@@ -30,7 +30,7 @@ export const experiences: Experience[] = [
     course: "A",
     title: "簡単絞り染めコース",
     target: "5・6歳のお子さまから",
-    price: "お一人 1,500円",
+    price: "お一人 1,500円（税別）",
     priceValue: 1500,
     priceFrom: false,
     duration: "約1時間",
@@ -56,7 +56,7 @@ export const experiences: Experience[] = [
     course: "B",
     title: "ストール染めコース",
     target: "5・6歳のお子さまから",
-    price: "お一人 2,800円〜（ストールの種類により異なります）",
+    price: "お一人 2,800円（税別）〜（ストールの種類により異なります）",
     priceValue: 2800,
     priceFrom: true,
     duration: "約1時間",
@@ -80,7 +80,7 @@ export const experiences: Experience[] = [
     course: "C",
     title: "「傘巻き絞り」コース",
     target: "小学5・6年生から",
-    price: "お一人 2,300円〜（トートバッグ・巾着の種類により異なります）",
+    price: "お一人 2,300円（税別）〜（トートバッグ・巾着の種類により異なります）",
     priceValue: 2300,
     priceFrom: true,
     duration: "2時間〜2時間30分（時間枠を2枠利用します）",
@@ -122,4 +122,4 @@ export const bengaraIntro =
   "染 YUI COLORSの体験では、土から生まれる自然由来の顔料「べんがら」を使って布を染めます。深みのある落ち着いた色合いが特徴で、どのコースも染めた作品はその日のうちにお持ち帰りいただけます。";
 
 export const experienceNote =
-  "料金・内容は変更になる場合があります。最新の情報・ご予約はお電話にてお気軽にお問い合わせください。";
+  "表示している料金はすべて税別です。料金・内容は変更になる場合があります。最新の情報・ご予約はお電話にてお気軽にお問い合わせください。";
