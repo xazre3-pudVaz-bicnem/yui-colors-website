@@ -3,15 +3,16 @@ import PageHero from "@/components/ui/PageHero";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import BlogPostGrid from "@/components/ui/BlogPostGrid";
 import CategoryNav from "@/components/ui/CategoryNav";
+import Pagination from "@/components/ui/Pagination";
 import ContactCta from "@/components/sections/ContactCta";
 import { JsonLd, blogListingJsonLd } from "@/lib/jsonld";
 import { createMetadata } from "@/lib/meta";
-import { getAllPosts } from "@/lib/blog";
+import { getPaginatedPosts, getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = createMetadata({
   title: "お知らせ・ブログ｜大津市の体験・観光コラム",
   description:
-    "染 YUI COLORSのお知らせとブログ。大津市観光と染め体験の楽しみ方、親子で楽しめる体験教室、雨の日の屋内体験など、琵琶湖周辺の旅に役立つ読みものをお届けします。",
+    "染 YUI COLORSのお知らせとブログ。大津市観光と染め体験の楽しみ方、親子で楽しめる体験、雨の日の屋内体験など、琵琶湖周辺の旅に役立つ読みものをお届けします。",
   path: "/blog",
   keywords: [
     "大津市 観光 ブログ",
@@ -21,11 +22,11 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const { posts, currentPage, totalPages } = getPaginatedPosts(1);
 
   return (
     <>
-      <JsonLd data={blogListingJsonLd(posts)} />
+      <JsonLd data={blogListingJsonLd(getAllPosts())} />
       <PageHero
         eyebrow="Journal"
         title="お知らせ・ブログ"
@@ -42,6 +43,11 @@ export default function BlogPage() {
         <div className="mx-auto max-w-6xl px-5">
           <CategoryNav />
           <BlogPostGrid posts={posts} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            basePath="/blog"
+          />
         </div>
       </section>
 

@@ -8,6 +8,7 @@ import Reasons from "@/components/sections/Reasons";
 import Gallery from "@/components/sections/Gallery";
 import AccessSection from "@/components/sections/AccessSection";
 import FaqSection from "@/components/sections/FaqSection";
+import LatestArticles from "@/components/sections/LatestArticles";
 import ContactCta from "@/components/sections/ContactCta";
 import WaveDivider from "@/components/ui/WaveDivider";
 import { JsonLd, touristAttractionJsonLd, faqJsonLd } from "@/lib/jsonld";
@@ -49,6 +50,7 @@ export default function HomePage() {
       <AccessSection />
       <WaveDivider fill="#f8fbfc" />
       <FaqSection />
+      <LatestArticles />
       <ContactCta />
     </>
   );

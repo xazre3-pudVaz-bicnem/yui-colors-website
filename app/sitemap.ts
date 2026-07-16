@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
-import { getAllPosts, getActiveCategories } from "@/lib/blog";
+import { getAllPosts, getActiveCategories, getBlogPageNumbers } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url;
@@ -23,6 +23,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...(image ? { images: [`${base}${image}`] } : {}),
   }));
 
+  const blogPagedPages: MetadataRoute.Sitemap = getBlogPageNumbers().map(
+    (page) => ({
+      url: `${base}/blog/page/${page}`,
+      changeFrequency: "weekly" as const,
+      priority: 0.4,
+    })
+  );
+
   const categoryPages: MetadataRoute.Sitemap = getActiveCategories().map(
     (category) => ({
       url: `${base}/blog/category/${category.slug}`,
@@ -39,5 +47,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [`${base}${post.image}`],
   }));
 
-  return [...staticPages, ...categoryPages, ...blogPages];
+  return [...staticPages, ...blogPagedPages, ...categoryPages, ...blogPages];
 }

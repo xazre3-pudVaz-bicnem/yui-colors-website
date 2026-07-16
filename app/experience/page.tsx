@@ -7,6 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import WaveDivider from "@/components/ui/WaveDivider";
 import Flow from "@/components/sections/Flow";
 import ContactCta from "@/components/sections/ContactCta";
+import RelatedArticles from "@/components/ui/RelatedArticles";
 import { createMetadata } from "@/lib/meta";
 import {
   experiences,
@@ -197,6 +198,10 @@ export default function ExperiencePage() {
       <WaveDivider fill="#f8fbfc" />
 
       <Flow />
+      <RelatedArticles
+        category="はじめての方へ"
+        title="はじめての方に読まれています"
+      />
       <ContactCta
         title="体験のご予約・ご相談"
         lead="コース選びに迷ったら、お気軽にお電話ください。人数やご予定に合わせてご案内します。"

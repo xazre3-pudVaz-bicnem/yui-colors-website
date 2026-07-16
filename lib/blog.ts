@@ -139,6 +139,37 @@ export function getPostBySlug(slug: string): UnifiedPost | undefined {
   return getAllPosts().find((post) => post.slug === slug);
 }
 
+/** ブログ一覧の1ページあたりの記事数 */
+export const POSTS_PER_PAGE = 12;
+
+export type PaginatedPosts = {
+  posts: UnifiedPost[];
+  currentPage: number;
+  totalPages: number;
+};
+
+/** 指定ページの記事を返す（1始まり。範囲外は端に丸める） */
+export function getPaginatedPosts(page: number): PaginatedPosts {
+  const all = getAllPosts();
+  const totalPages = Math.max(1, Math.ceil(all.length / POSTS_PER_PAGE));
+  const currentPage = Math.min(Math.max(1, page), totalPages);
+  const start = (currentPage - 1) * POSTS_PER_PAGE;
+  return {
+    posts: all.slice(start, start + POSTS_PER_PAGE),
+    currentPage,
+    totalPages,
+  };
+}
+
+/** ページネーションで生成すべき2ページ目以降のページ番号 */
+export function getBlogPageNumbers(): number[] {
+  const totalPages = Math.max(
+    1,
+    Math.ceil(getAllPosts().length / POSTS_PER_PAGE)
+  );
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => i + 2);
+}
+
 export function getPostsByCategory(categoryName: string): UnifiedPost[] {
   return getAllPosts().filter((post) => post.category === categoryName);
 }
